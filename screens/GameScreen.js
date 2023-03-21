@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -22,11 +22,9 @@ let minBoundary = 1;
 let maxBoundary = 100;
 
 const GameScreen = ({ userNumber, onGameOver }) => {
-  const initialGuess = useRef(
-    generateRandomBetween(minBoundary, maxBoundary, userNumber)
-  );
+  const initialGuess = generateRandomBetween(1, 100, userNumber);
 
-  const [currentGuess, setCurrentGuess] = useState(initialGuess.current);
+  const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
